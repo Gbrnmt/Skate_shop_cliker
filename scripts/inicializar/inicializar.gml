@@ -21,3 +21,13 @@ function atualiza_tempo()
 	global.gamesegundo = delta_time / 1000000;
 	global.framerate = global.gamesegundo * global.game_spd;
 }
+
+// variaveis de dinheiro
+global.gold = 1;
+
+//informacoes dos manegers
+global.managers = [0, 0, 0, 0, 0, 0, 0, 0,];
+
+//lista de produtos
+global.produtos = [0, 0, 0, 0, 0, 0, 0, 0,];
+

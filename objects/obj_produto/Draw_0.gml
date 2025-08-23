@@ -32,8 +32,46 @@ draw_rectangle_color(_x1, _y1, _x2, _y2,c_gray,c_gray,c_gray,c_gray, false);
 //desenhando o progresso da barra
 var _progresso = (timer / tempo) * _larg;
 draw_rectangle_color(_x1, _y1, _x1 + _progresso, _y2,c_green,c_green,c_green,c_green, false);
+ //desenhando o quanto eu rendo
+ //ajustando aliamento
+ draw_set_halign(2);
+ var _str = "R$ " + string_format(lucro,0,2);
+ draw_text(_x2, _y1 + sprite_height / 8, _str);
+ //voltando o aliamento para o centro
+ draw_set_halign(1);
  
-draw_text(20,20,timer);
+ //desenhando meu preco
+ //desenhando o quadrado do meu preço
+ _x1 = x + 42;
+ _y1 = y + 8;
+ _x2 = _x1 + 64;
+ _y2 = _y1 + 32;
+ //definindo com com base na posibilidade de me comprar
+ var _cor = global.gold >= custo ? c_green : c_gray;
+ var _str = string_format(custo,0,0);
+ //desenhando uma bordas se o mouse tiver por cima de mim
+ if (efeito_comprar)
+ {
+	 draw_rectangle_color(_x1 - 1,_y1 - 1,_x2 + 1, _y2 + 1, c_yellow,c_yellow,c_yellow,c_yellow,0);
+ }
+ 
+ draw_rectangle_color(_x1,_y1,_x2, _y2, _cor,_cor,_cor,_cor,0);
+ draw_text_transformed(_x1 + 32,_y1 + 16, "R$ " + _str, 1, 1,0);
+ 
+ //desenhando o tempo de level
+ //descobrindo quantos segundos ele leva
+ var _s = floor((tempo - timer) % 60);
+ var _m = (tempo - timer) div 60;
+ var _h = ((tempo - timer) div 60) div 60;
+ draw_set_halign(2);
+ //definindo a exibicao do texro bonitinho
+ var _seg = _s > 9 ? _s : "0" + string(_s);
+ var _min = _m > 9 ? _m : "0" + string(_m);
+ var _hor = _h > 9 ? _h : "0" + string(_h);
+ draw_text(x + sprite_width - 8 ,_y1 + 16, string("{0}:{1}:{2}", _hor, _min, _seg));
+ 
+ draw_set_halign(1);
+ 
 
 //resetando o meu alinhamento do meu texto
 draw_set_valign(-1);
