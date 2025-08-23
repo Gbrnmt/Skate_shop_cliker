@@ -8,3 +8,26 @@ draw_set_halign(0);
 var _str = "R$ " + string_format(global.gold,0,2);
 draw_text(20, _alt * _n++, _str);
 draw_set_halign(-1);
+
+
+//eu quero sbaer quanto dinheiro eu tenho eu faco por segundo
+var _dinheiro_seg = 0;
+
+//rodando pelos produtos
+for (var i = 0; i < array_length(global.produtos); i++)
+{
+	if (global.produtos[i] != 0)
+	{
+		//pegando as informacoes do produto atual
+		var _atual = global.produtos[i];
+		with(_atual)
+		{
+			if (tenho_manager && comprado)
+			{
+				_dinheiro_seg += (lucro / tempo);
+			}
+		}
+	}
+}
+
+draw_text(20, _alt * _n++, _dinheiro_seg);
