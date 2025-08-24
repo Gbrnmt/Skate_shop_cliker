@@ -11,3 +11,5 @@ else
 {
 	global.game_spd = 1;
 }
+
+gerencia_produtos();
