@@ -24,13 +24,40 @@ else
 //meu custo
 custo = custo_base;
 
-comprado =false;
+comprado = false;
 efeito_comprar = false;
 
 lucro = lucro_base;
 
 //me inserindo na lista de produto
 global.produtos[indice] = id;
+
+incremento = 1.07;
+
+comprar = function()
+{
+	global.gold -= custo;
+	comprado = true;
+	
+	var _custo_atual = floor(custo_base * (power(incremento, level)));
+				
+	//aumentanddo o custo dele
+	custo *= 2;
+	//ajustando o lucro
+	//subindo 1 level
+	level++;
+	//lucro aumenta com base no level e no lucro base
+	lucro = lucro_base * level;
+}
+
+acao = function()
+{
+	timer = 0;
+	fazer = tenho_manager;
+	//dando o lucro
+	global.gold += lucro;
+}
+
 
 //desendo o produto
 desenha_produto = function()

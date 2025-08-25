@@ -11,10 +11,7 @@ if (comprado)
 		//enchi a barra
 		if (timer > tempo)
 		{
-			timer = 0;
-			fazer = tenho_manager;
-			//dando o lucro
-			global.gold += lucro;
+			acao();
 		}
 	}
 }
@@ -46,16 +43,7 @@ if(_mouse_sobre)
 			//checando se a pessoa tem dinheiro
 			if (global.gold >= custo)
 			{
-				global.gold -= custo;
-				comprado = true;
-				
-				//aumentanddo o custo dele
-				custo *= 2;
-				//ajustando o lucro
-				//subindo 1 level
-				level++;
-				//lucro aumenta com base no level e no lucro base
-				lucro = lucro_base * level;
+				comprar();
 			}
 			
 		}
